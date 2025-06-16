@@ -4,4 +4,5 @@ export interface BookExtractionResult {
   gradeLevel: string | null; // Grade level if educational book, optional
   subject: string | null; // Subject if educational book, optional
   series: string | null; // Series if part of a series, optional
+  timestamp: number; // Optional timestamp for when the extraction was done
 }

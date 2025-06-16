@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
-import { extractBookDetails } from "../services/geminiAI.service";
+import {
+  extractBookDetails,
+  saveBookDetails,
+} from "../services/geminiAI.service";
 import { BookExtractionResult } from "../models/bookExtraction.model";
 
-const geminiAI = async (req: Request, res: Response) => {
+const extractBookDetailsController = async (req: Request, res: Response) => {
   try {
     if (!req.file) {
       res.status(400).json({ error: "No image file provided" });
@@ -15,12 +18,6 @@ const geminiAI = async (req: Request, res: Response) => {
       mimetype
     );
 
-    // Basic validation
-    if (!bookData.title) {
-      res.status(400).json({ error: "Could not determine book title" });
-      return;
-    }
-
     res.json(bookData);
   } catch (error) {
     console.error("Book processing error:", error);
@@ -28,6 +25,21 @@ const geminiAI = async (req: Request, res: Response) => {
   }
 };
 
+const saveBookDetailsController = async (req: Request, res: Response) => {
+  try {
+    const bookDetails = req.body;
+    const response: BookExtractionResult = await saveBookDetails(bookDetails);
+    res
+      .status(200)
+      .json({ message: "Book details saved successfully", data: response });
+  } catch (error: any) {
+    res
+      .status(400)
+      .json({ error: error.message || "Failed to save book details" });
+  }
+};
+
 export default {
-  geminiAI,
+  extractBookDetailsController,
+  saveBookDetailsController,
 };
