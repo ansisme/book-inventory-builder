@@ -115,7 +115,7 @@ export default function View() {
                         Choose a file or drag & drop it here
                       </p>
                       <p className="text-sm text-gray-500">
-                        JPEG, JPG or PNG, formats, up to 5MB
+                        JPEG, JPG or PNG, formats, up to 10MB
                       </p>
                     </>
                   )}

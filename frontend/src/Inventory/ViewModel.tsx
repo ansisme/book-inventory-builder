@@ -17,7 +17,7 @@ const InventoryViewModel = () => {
   const [error, setError] = useState<string | null>(null)
   const [bookList, setBookList] = useState<any[]>([])
 
-  const MAX_FILE_SIZE = 5 * 1024 * 1024
+  const MAX_FILE_SIZE = 10 * 1024 * 1024
 
   const extractDetails = async (file: File) => {
     setLoading(true)
@@ -61,7 +61,7 @@ const InventoryViewModel = () => {
   }
   const handleFile = (file: File) => {
     if (file.size > MAX_FILE_SIZE) {
-      setError("File size exceeds 5MB limit")
+      setError("File size exceeds 10MB limit")
       return
     }
     if (
