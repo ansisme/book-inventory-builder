@@ -1,8 +1,13 @@
 import { Request, Response } from "express";
-import { extractBookDetails } from "../services/geminiAI.service";
+import {
+  extractBookDetails,
+  saveBookDetails,
+  // getBookDetails,
+  getAllBooks,
+} from "../services/geminiAI.service";
 import { BookExtractionResult } from "../models/bookExtraction.model";
 
-const geminiAI = async (req: Request, res: Response) => {
+const extractBookDetailsController = async (req: Request, res: Response) => {
   try {
     if (!req.file) {
       res.status(400).json({ error: "No image file provided" });
@@ -15,12 +20,6 @@ const geminiAI = async (req: Request, res: Response) => {
       mimetype
     );
 
-    // Basic validation
-    if (!bookData.title) {
-      res.status(400).json({ error: "Could not determine book title" });
-      return;
-    }
-
     res.json(bookData);
   } catch (error) {
     console.error("Book processing error:", error);
@@ -28,6 +27,65 @@ const geminiAI = async (req: Request, res: Response) => {
   }
 };
 
+const saveBookDetailsController = async (req: Request, res: Response) => {
+  try {
+    const bookDetails = req.body;
+    const response: BookExtractionResult = await saveBookDetails(bookDetails);
+    res
+      .status(200)
+      .json({ message: "Book details saved successfully", data: response });
+  } catch (error: any) {
+    res
+      .status(400)
+      .json({ error: error.message || "Failed to save book details" });
+  }
+};
+
+// export const getBookDetailsController = async (req: Request, res: Response) => {
+//   try {
+//     const { matchKey } = req.query;
+//     if (!matchKey || typeof matchKey !== "string") {
+//       res.status(400).json({ error: "Invalid match key provided" });
+//       return;
+//     }
+
+//     const bookDetails: BookExtractionResult | null = await getBookDetails(
+//       matchKey
+//     );
+//     if (!bookDetails) {
+//       res.status(404).json({ error: "Book details not found" });
+//       return;
+//     }
+
+//     res.status(200).json(bookDetails);
+//   } catch (error: any) {
+//     console.error("Error retrieving book details:", error);
+//     res
+//       .status(500)
+//       .json({ error: error.message || "Failed to retrieve book details" });
+//   }
+// };
+
+export const getAllBooksController = async (req: Request, res: Response) => {
+  try {
+    const bookDetails: any[] | null = await getAllBooks();
+    if (!bookDetails) {
+      res.status(404).json({ error: "No books found" });
+      return;
+    }
+
+    res.status(200).json(bookDetails);
+  } catch (error: any) {
+    console.error("Error retrieving book details:", error);
+    res
+      .status(500)
+      .json({ error: error.message || "Failed to retrieve book details" });
+  }
+};
+
 export default {
-  geminiAI,
+  extractBookDetailsController,
+  saveBookDetailsController,
+  // getBookDetailsController,
+  getAllBooksController,
 };
