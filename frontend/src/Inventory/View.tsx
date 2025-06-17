@@ -23,6 +23,9 @@ export default function View() {
     setError,
     setSaveStatus,
   } = InventoryViewModel()
+  const triggerCamera = () => {
+    fileInputRef.current?.click()
+  }
   useEffect(() => {
     const handlePaste = (e: ClipboardEvent) => {
       const items = e.clipboardData?.items
@@ -129,7 +132,10 @@ export default function View() {
           </div>
           <div className="flex flex-col w-full max-w-xs">
             {!image && (
-              <button className="bg-primary-500 cursor-pointer rounded-lg mt-2">
+              <button
+                className="bg-primary-500 cursor-pointer rounded-lg mt-2"
+                onClick={triggerCamera}
+              >
                 <p className="text-white font-semibold text-md">
                   Take a picture
                 </p>

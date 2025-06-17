@@ -4,14 +4,6 @@ const Card = ({ book }: any) => {
       className=" relative flex flex-col min-h-[180px] w-80 
       overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]"
     >
-      {/* Book Cover Image (if available) */}
-      {/* {book.imageUrl && (
-        <div
-          className="flex-center flex-grow bg-gray-50 bg-center bg-cover min-h-[180px]"
-          style={{ backgroundImage: `url(${book.imageUrl})` }}
-        />
-      )} */}
-
       <div className="flex flex-col gap-2 min-h-[120px] p-5 md:gap-3">
         <p className="font-bold text-lg text-black line-clamp-2">
           {book.title}
@@ -24,9 +16,9 @@ const Card = ({ book }: any) => {
           {book.gradeLevel || ""}
         </p>
         <div className="text-grey-600">
-          <span className="font-semibold">Subject:</span>
+          <span className="font-semibold">Subject:</span>{" "}
           {book.subject ? (
-            <p className="mt-1 whitespace-pre-wrap break-words">
+            <p className="mt-1 inline whitespace-pre-wrap break-words">
               {book.subject}
             </p>
           ) : (
