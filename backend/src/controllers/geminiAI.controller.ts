@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import {
   extractBookDetails,
   saveBookDetails,
+  // getBookDetails,
+  getAllBooks,
 } from "../services/geminiAI.service";
 import { BookExtractionResult } from "../models/bookExtraction.model";
 
@@ -39,7 +41,51 @@ const saveBookDetailsController = async (req: Request, res: Response) => {
   }
 };
 
+// export const getBookDetailsController = async (req: Request, res: Response) => {
+//   try {
+//     const { matchKey } = req.query;
+//     if (!matchKey || typeof matchKey !== "string") {
+//       res.status(400).json({ error: "Invalid match key provided" });
+//       return;
+//     }
+
+//     const bookDetails: BookExtractionResult | null = await getBookDetails(
+//       matchKey
+//     );
+//     if (!bookDetails) {
+//       res.status(404).json({ error: "Book details not found" });
+//       return;
+//     }
+
+//     res.status(200).json(bookDetails);
+//   } catch (error: any) {
+//     console.error("Error retrieving book details:", error);
+//     res
+//       .status(500)
+//       .json({ error: error.message || "Failed to retrieve book details" });
+//   }
+// };
+
+export const getAllBooksController = async (req: Request, res: Response) => {
+  try {
+    const bookDetails: any[] | null = await getAllBooks();
+    if (!bookDetails) {
+      res.status(404).json({ error: "No books found" });
+      return;
+    }
+
+    res.status(200).json(bookDetails);
+  } catch (error: any) {
+    console.error("Error retrieving book details:", error);
+    res
+      .status(500)
+      .json({ error: error.message || "Failed to retrieve book details" });
+  }
+};
+
 export default {
   extractBookDetailsController,
   saveBookDetailsController,
+  // getBookDetailsController,
+  getAllBooksController,
 };

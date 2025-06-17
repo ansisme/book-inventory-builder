@@ -4,6 +4,7 @@ import {
   API_EXTRACT_BOOK,
   API_USER,
   API_SAVE_BOOK,
+  API_GET_ALL_BOOKS,
 } from "../constants/strings"
 const server = new Server()
 export class BookInventory {
@@ -40,6 +41,16 @@ export class BookInventory {
       return response
     } catch (error: any) {
       console.log("Error saving book:", error)
+      throw error
+    }
+  }
+  async getAllBooks(): Promise<any> {
+    const endpoint = `${API_USER}/${API_GET_ALL_BOOKS}`
+    try {
+      const response = await server.get(endpoint)
+      return response
+    } catch (error: any) {
+      console.log("Error retrieving book details:", error)
       throw error
     }
   }

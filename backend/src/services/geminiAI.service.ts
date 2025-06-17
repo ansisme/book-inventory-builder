@@ -61,7 +61,8 @@ export const saveBookDetails = async (
     const timestamp = Math.floor(currentTimestamp / 1000); //seconds
     const title = updatedData.title?.trim().toLowerCase() || "";
     const author = updatedData.author?.trim().toLowerCase() || "";
-    const matchKey = generateMatchKey(title, author);
+    const series = updatedData.series?.trimEnd().toLowerCase() || "";
+    const matchKey = generateMatchKey(title, author, series);
 
     const bookData = {
       ...updatedData,
@@ -79,5 +80,39 @@ export const saveBookDetails = async (
   } catch (error) {
     console.error("Error saving book details:", error);
     throw new Error("Failed to save book details.");
+  }
+};
+
+// export const getBookDetails = async (
+//   matchKey: string
+// ): Promise<BookExtractionResult | null> => {
+//   try {
+//     const book = await BOOKS.findOne({ matchKey });
+//     if (!book) {
+//       return null;
+//     }
+//     return {
+//       title: book.title || null,
+//       author: book.author || null,
+//       gradeLevel: book.gradeLevel || null,
+//       subject: book.subject || null,
+//       series: book.series || null,
+//       timestamp: book.timestamp || null,
+//     };
+//   } catch (error) {
+//     console.error("Error retrieving book details:", error);
+//     throw new Error("Failed to retrieve book details.");
+//   }
+// };
+
+export const getAllBooks = async (): Promise<any | null> => {
+  try {
+    const book = await BOOKS.find({}).sort({ timestamp: -1 }).toArray();
+    if (!book || book.length === 0) {
+      return null;
+    }
+    return book;
+  } catch (error) {
+    throw new Error("Failed to retrieve book details.");
   }
 };

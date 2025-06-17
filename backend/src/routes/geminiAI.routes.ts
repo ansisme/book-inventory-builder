@@ -2,7 +2,6 @@ import { Router } from "express";
 import asyncHandler from "express-async-handler";
 import multer from "multer";
 import geminiAIController from "../controllers/geminiAI.controller";
-import saveBookDetailsController from "../controllers/geminiAI.controller";
 const router = Router();
 // const storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
@@ -25,6 +24,11 @@ router.post(
 router.post(
   "/save_book_details",
   asyncHandler(geminiAIController.saveBookDetailsController)
+);
+
+router.get(
+  "/get_all_books",
+  asyncHandler(geminiAIController.getAllBooksController)
 );
 
 export default router;
