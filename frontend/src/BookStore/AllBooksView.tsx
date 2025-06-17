@@ -3,12 +3,12 @@ import NavBar from "../components/NavBar"
 import AllBooksViewModel from "./AllBooksViewModel"
 import Loader from "../components/Loader"
 import Card from "../components/Card"
+import searchIcon from "../assets/icons/search.svg"
 export const AllBooksView = () => {
   const {
     getAllBooks,
     setSearch,
     search,
-    // filteredBooks,
     currentBooks,
     page,
     totalPages,
@@ -27,7 +27,7 @@ export const AllBooksView = () => {
       <NavBar />
       <div className="ml-3 rounded py-3 px-4 w-full max-w-md border-[1px] border-gray-200 flex mt-6">
         <img
-          src="src/assets/icons/search.svg"
+          src={searchIcon}
           alt="Search Icon"
           width={24}
           height={24}
@@ -37,7 +37,6 @@ export const AllBooksView = () => {
           type="text"
           placeholder="Search by title, author, subject, grade or series..."
           value={search}
-          // onChange={(e) => setSearch(e.target.value)}
           onChange={(e) => {
             setSearch(e.target.value)
             if (e.target.value) {

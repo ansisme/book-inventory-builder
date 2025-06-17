@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom"
-
+import openbook from "../../public/openbook.svg"
 const NavBar = () => {
   const linkClass =
     "transition-colors hover:text-primary-500 text-black font-semibold"
@@ -10,7 +10,7 @@ const NavBar = () => {
       <div className="wrapper flex justify-start md:flex-between w-full flex-col items-center gap-5 md:flex-row">
         <Link to="/" className="w-36">
           <img
-            src="../public/openbook.svg"
+            src={openbook}
             width={40}
             height={18}
             alt="Book Logo"

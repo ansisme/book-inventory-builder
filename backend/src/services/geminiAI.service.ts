@@ -1,9 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { BookExtractionResult } from "../models/bookExtraction.model";
 import { BOOKS } from "../db.collections";
-import { generateMatchKey } from "../utils/bookFunctions";
+import { generateMatchKey } from "../utils/book.utils";
 import dotenv from "dotenv";
-dotenv.config(); //
+dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export const extractBookDetails = async (
@@ -82,28 +82,6 @@ export const saveBookDetails = async (
     throw new Error("Failed to save book details.");
   }
 };
-
-// export const getBookDetails = async (
-//   matchKey: string
-// ): Promise<BookExtractionResult | null> => {
-//   try {
-//     const book = await BOOKS.findOne({ matchKey });
-//     if (!book) {
-//       return null;
-//     }
-//     return {
-//       title: book.title || null,
-//       author: book.author || null,
-//       gradeLevel: book.gradeLevel || null,
-//       subject: book.subject || null,
-//       series: book.series || null,
-//       timestamp: book.timestamp || null,
-//     };
-//   } catch (error) {
-//     console.error("Error retrieving book details:", error);
-//     throw new Error("Failed to retrieve book details.");
-//   }
-// };
 
 export const getAllBooks = async (): Promise<any | null> => {
   try {

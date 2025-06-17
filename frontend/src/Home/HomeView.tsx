@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import NavBar from "../components/NavBar"
+import Hero from "../assets/images/Hero.png"
 const HomeView = () => {
   return (
     <>
@@ -25,7 +26,7 @@ const HomeView = () => {
             </button>
           </div>
           <img
-            src="src/assets/images/Hero.png"
+            src={Hero}
             alt="Hero Image"
             className="max-h-[70vh] object-contain object-center 2xl:max-h-50vh"
           />

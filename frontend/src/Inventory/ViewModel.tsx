@@ -1,6 +1,5 @@
 import { useRef, useState } from "react"
 import { bookInventory } from "../api/Book"
-// import { useParams } from "react-router-dom"
 const InventoryViewModel = () => {
   const defaultBook = {
     title: "",
@@ -26,8 +25,6 @@ const InventoryViewModel = () => {
     setBookForm(defaultBook)
 
     try {
-      // const formData = new FormData()
-
       const res = await bookInventory.extractBookDetails(file)
 
       const bookData = res.data

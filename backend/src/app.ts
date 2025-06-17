@@ -19,15 +19,6 @@ const createApp = async () => {
   );
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  // app.use(
-  //   fileUpload({
-  //     limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-  //     abortOnLimit: true,
-  //     responseOnLimit: "File size exceeds the 5MB limit",
-  //     useTempFiles: true, // Uses temporary files instead of memory
-  //     tempFileDir: "/tmp/", // Optional temp directory
-  //   })
-  // );
   // Database connection
   mongoose
     .connect(process.env.MONGODB_URI!)
@@ -35,17 +26,7 @@ const createApp = async () => {
     .catch((err) => console.error("MongoDB connection error:", err));
 
   app.use("/user", bookRoutes);
-  // app.use(
-  //   (
-  //     err: any,
-  //     req: express.Request,
-  //     res: express.Response,
-  //     next: express.NextFunction
-  //   ) => {
-  //     console.error(err.stack);
-  //     res.status(500).json({ error: "Something went wrong!" });
-  //   }
-  // );
+
   return app;
 };
 

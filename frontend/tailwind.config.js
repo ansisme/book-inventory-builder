@@ -24,7 +24,7 @@ export default {
         poppins: ['var(--font-poppins)'],
       },
        backgroundImage: {
-        'dotted-pattern': "url('src/assets/images/dotted-pattern.png')",
+        'dotted-pattern': "url('./assets/images/dotted-pattern.png')",
       },
     },
   },
