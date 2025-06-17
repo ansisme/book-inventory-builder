@@ -24,10 +24,10 @@ export const extractBookDetails = async (
 
     const prompt = `Extract the following details from this book cover image:
       - Title (most important, never leave blank)
-      - Author (if available)
-      - Grade level (if educational book)
-      - Subject (if educational book)
-      - Series (if part of a series)
+      - Author (most important, never leave blank)
+      - Grade level
+      - Subject(any theme, topic, or message the book conveys — not restricted to academic fields; can be a phrase or sentence found on the cover)
+      - Series
 
       Only return a JSON object with the following structure:
 
@@ -39,7 +39,7 @@ export const extractBookDetails = async (
         "series": "..."
       }
 
-      Use null if any information is not available.`;
+      Use null if any information is not available.Try to extract as much information as possible.`;
 
     const result = await model.generateContent([prompt, imageData]);
     const response = await result.response;
