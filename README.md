@@ -26,7 +26,7 @@ A web application for managing book inventory by scanning book covers and extrac
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/book-inventory-builder.git
+git clone https://github.com/ansisme/book-inventory-builder.git
 cd book-inventory-builder
 ```
 ### 2. Gemini AI 
