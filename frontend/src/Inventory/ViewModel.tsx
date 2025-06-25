@@ -38,6 +38,7 @@ const InventoryViewModel = () => {
       })
     } catch (err) {
       setBookDetails({ error: "Failed to extract details" })
+      setError("Failed to extract book details. Please try again.")
     }
 
     setLoading(false)
