@@ -15,9 +15,12 @@ export const AllBooksView = () => {
     setPage,
     paginatedFilteredBooks,
     filteredTotalPages,
+    loading,
   } = AllBooksViewModel()
   useEffect(() => {
     getAllBooks()
+    setPage(1)
+    setSearch("")
   }, [])
   const booksToDisplay = search ? paginatedFilteredBooks : currentBooks
   const currentTotalPages = search ? filteredTotalPages : totalPages
@@ -46,8 +49,11 @@ export const AllBooksView = () => {
           className="w-full border-0 focus:ring-0 focus:outline-none"
         />
       </div>
-
-      {booksToDisplay && booksToDisplay.length > 0 ? (
+      {loading ? (
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader />
+        </div>
+      ) : booksToDisplay && booksToDisplay.length > 0 ? (
         <>
           <ul className="flex flex-wrap">
             {booksToDisplay.map((book, index) => (
@@ -95,7 +101,7 @@ export const AllBooksView = () => {
         </>
       ) : (
         <div className="min-h-screen flex items-center justify-center">
-          <Loader />
+          No books found. Please try a different search term.
         </div>
       )}
     </div>

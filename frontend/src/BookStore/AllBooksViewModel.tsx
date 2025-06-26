@@ -4,12 +4,15 @@ const AllBooksViewModel = () => {
   const [bookList, setBookList] = useState<any[]>([])
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
   const limit = 10
   const getAllBooks = async () => {
+    setLoading(true)
     const response = await bookInventory.getAllBooks()
     if (response && response.data) {
       setBookList(response.data)
     }
+    setLoading(false)
   }
 
   const indexOfLastBook = page * limit
@@ -47,6 +50,7 @@ const AllBooksViewModel = () => {
     setPage,
     paginatedFilteredBooks,
     filteredTotalPages,
+    loading,
   }
 }
 
