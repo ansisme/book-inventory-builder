@@ -45,7 +45,7 @@ GEMINI_API_KEY=your_actual_api_key_here
     - Sign up at MongoDB Atlas
     - Create a new project → "Build a Database"
     - Select FREE tier (M0)
-    - Choose cloud provider/region (AWS/Oregon recommended)
+    - Choose cloud provider/region
     -  Create cluster (takes ~5 minutes)
 
 - Configure Database Access:
