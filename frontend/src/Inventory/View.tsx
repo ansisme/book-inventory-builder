@@ -228,7 +228,7 @@ export default function View() {
                     className="text-md w-full focus:ring-0 focus:outline-none border-none resize-none bg-transparent"
                   />
                   <div className="text-xs text-gray-500 text-right">
-                    {200 - (bookForm.subject?.length || 0)}/200
+                    {0 + (bookForm.subject?.length || 0)}/200
                   </div>
                 </div>
               </div>
