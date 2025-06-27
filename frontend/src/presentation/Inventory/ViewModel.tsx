@@ -15,7 +15,6 @@ const InventoryViewModel = () => {
   const [bookForm, setBookForm] = useState(defaultBook)
   const [saveStatus, setSaveStatus] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [bookList, setBookList] = useState<any[]>([])
 
   const MAX_FILE_SIZE = 10 * 1024 * 1024
 
@@ -106,12 +105,6 @@ const InventoryViewModel = () => {
       handleFile(e.target.files[0])
     }
   }
-  const getAllBooks = async () => {
-    const response = await bookInventory.getAllBooks()
-    if (response && response.data) {
-      setBookList(response.data)
-    }
-  }
   return {
     image,
     fileInputRef,
@@ -128,8 +121,6 @@ const InventoryViewModel = () => {
     bookDetails,
     saveBook,
     saveStatus,
-    getAllBooks,
-    bookList,
     setBookDetails,
     setBookForm,
     defaultBook,
