@@ -63,41 +63,39 @@ export const AllBooksView = () => {
             ))}
           </ul>
 
-          {currentTotalPages > 1 && (
-            <div className="flex justify-center mt-4 pb-10">
-              <button
-                onClick={() => setPage(page - 1)}
-                disabled={page === 1}
-                className={`px-3 py-1 mx-1 border rounded disabled:opacity-50 bg-gray-300 hover:bg-primary-500 disabled:hover:text-black hover:text-white font-medium disabled:bg-gray-200 disbaled:border-none focus:ring-0`}
-              >
-                Previous
-              </button>
+          <div className="flex justify-center mt-4 pb-10">
+            <button
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+              className={`px-3 py-1 mx-1 border rounded disabled:opacity-50 bg-gray-300 hover:bg-primary-500 disabled:hover:text-black hover:text-white font-medium disabled:bg-gray-200 disbaled:border-none focus:ring-0`}
+            >
+              Previous
+            </button>
 
-              {Array.from({ length: currentTotalPages }, (_, i) => i + 1).map(
-                (pageNum) => (
-                  <button
-                    key={pageNum}
-                    onClick={() => setPage(pageNum)}
-                    className={`px-3 py-1 mx-1 border rounded ${
-                      page === pageNum
-                        ? "bg-primary-500 text-white "
-                        : "bg-gray-300"
-                    }`}
-                  >
-                    {pageNum}
-                  </button>
-                ),
-              )}
+            {Array.from({ length: currentTotalPages }, (_, i) => i + 1).map(
+              (pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => setPage(pageNum)}
+                  className={`px-3 py-1 mx-1 border rounded ${
+                    page === pageNum
+                      ? "bg-primary-500 text-white "
+                      : "bg-gray-300"
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              ),
+            )}
 
-              <button
-                onClick={() => setPage(page + 1)}
-                disabled={page === totalPages}
-                className="px-3 py-1 mx-1 border rounded disabled:opacity-50 hover:bg-primary-500 hover:text-white disabled:hover:text-black bg-gray-300 font-medium disabled:bg-gray-200 disbaled:border-none"
-              >
-                Next
-              </button>
-            </div>
-          )}
+            <button
+              onClick={() => setPage(page + 1)}
+              disabled={page === totalPages}
+              className="px-3 py-1 mx-1 border rounded disabled:opacity-50 hover:bg-primary-500 hover:text-white disabled:hover:text-black bg-gray-300 font-medium disabled:bg-gray-200 disbaled:border-none"
+            >
+              Next
+            </button>
+          </div>
         </>
       ) : (
         <div className="min-h-screen flex items-center justify-center">
