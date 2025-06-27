@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { bookInventory } from "../api/Book"
+import { bookInventory } from "../../api/Book"
 const InventoryViewModel = () => {
   const defaultBook = {
     title: "",

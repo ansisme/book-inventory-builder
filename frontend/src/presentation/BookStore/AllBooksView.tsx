@@ -1,9 +1,9 @@
 import { useEffect } from "react"
-import NavBar from "../components/NavBar"
+import NavBar from "../../components/NavBar"
 import AllBooksViewModel from "./AllBooksViewModel"
-import Loader from "../components/Loader"
-import Card from "../components/Card"
-import searchIcon from "../assets/icons/search.svg"
+import Loader from "../../components/Loader"
+import Card from "../../components/Card"
+import searchIcon from "../../assets/icons/search.svg"
 export const AllBooksView = () => {
   const {
     getAllBooks,

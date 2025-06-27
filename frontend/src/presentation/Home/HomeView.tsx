@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import NavBar from "../components/NavBar"
-import Hero from "../assets/images/Hero.png"
+import NavBar from "../../components/NavBar"
+import Hero from "../../assets/images/Hero.png"
 const HomeView = () => {
   return (
     <>

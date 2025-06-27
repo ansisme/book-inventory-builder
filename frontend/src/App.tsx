@@ -1,8 +1,8 @@
 import "./App.css"
-import View from "./Inventory/View"
+import View from "./presentation/Inventory/View"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomeView from "./Home/HomeView"
-import { AllBooksView } from "./BookStore/AllBooksView"
+import HomeView from "./presentation/Home/HomeView"
+import { AllBooksView } from "./presentation/BookStore/AllBooksView"
 function App() {
   return (
     <>

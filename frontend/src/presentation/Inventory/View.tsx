@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import InventoryViewModel from "./ViewModel"
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined"
-import NavBar from "../components/NavBar"
+import NavBar from "../../components/NavBar"
 export default function View() {
   const {
     image,

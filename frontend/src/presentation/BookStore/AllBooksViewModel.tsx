@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { bookInventory } from "../api/Book"
+import { bookInventory } from "../../api/Book"
 const AllBooksViewModel = () => {
   const [bookList, setBookList] = useState<any[]>([])
   const [search, setSearch] = useState("")
